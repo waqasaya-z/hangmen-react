@@ -9,11 +9,18 @@ function App() {
   const [mysteryWord, setMysteryWord] = useState<string>(
     wordList[Math.floor(Math.random() * wordList.length)]
   );
+
   const [clickedLetter, setClickedLetter] = useState<string[]>([]);
 
   const numberOfGuesses = clickedLetter.filter(
     (char) => !mysteryWord.includes(char)
   );
+
+  const someCondition = false;
+
+  if (someCondition) {
+    setMysteryWord((prev) => prev);
+  }
 
   const addGuessedLetter = useCallback(
     (char: string) => {
@@ -40,8 +47,10 @@ function App() {
     };
   }, [clickedLetter]);
 
-  const isLose = numberOfGuesses.length >= 6
-  const isWin = mysteryWord.split('').every(char => clickedLetter.includes(char))
+  const isLose = numberOfGuesses.length >= 6;
+  const isWin = mysteryWord
+    .split("")
+    .every((char) => clickedLetter.includes(char));
 
   return (
     <div
@@ -49,10 +58,14 @@ function App() {
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
-        alignItems: "center",
+        alignItems: "center"
       }}
     >
-      <p style={{ fontWeight: "bold" }}> {isLose && "You lost, Refersh to try again"} {isWin && "You Won! , Referesh to play again"} </p>
+      <p style={{ fontWeight: "bold" }}>
+        {" "}
+        {isLose && "You lost, Refersh to try again"}{" "}
+        {isWin && "You Won! , Referesh to play again"}{" "}
+      </p>
       <HangmenAvatar numberOfGuesses={numberOfGuesses.length} />
       <HangmenWordPuzzle word={mysteryWord} guessedLetter={clickedLetter} />
       <div
