@@ -1,5 +1,3 @@
-import styles from "./Keyboard.module.css";
-
 const alphabets = [
   "a",
   "b",

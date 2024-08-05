@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const HangmenWordPuzzle = ({ word, guessedLetter }: { word: string, guessedLetter: string[] }) => {
 
   return (

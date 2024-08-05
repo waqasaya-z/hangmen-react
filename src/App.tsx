@@ -10,7 +10,6 @@ function App() {
     wordList[Math.floor(Math.random() * wordList.length)]
   );
   const [clickedLetter, setClickedLetter] = useState<string[]>([]);
-  const [message, setMessage] = useState(" ")
 
   const numberOfGuesses = clickedLetter.filter(
     (char) => !mysteryWord.includes(char)
